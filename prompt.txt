@@ -1,0 +1,42 @@
+OBJECTIF
+Reproduire en React le design de la frame Landing — Lay1 du fichier .pen
+ouvert dans Pencil. Fidélité maximale.
+
+SOURCE DE VÉRITÉ
+Le MCP Pencil, pas ton interprétation.
+- get_editor_state pour t'orienter
+- batch_get pour lire les nœuds
+Tu ne codes AUCUNE valeur (couleur, taille,
+espacement, rayon, police) qui ne vienne
+d'une lecture MCP. Interdiction d'arrondir
+"au plus proche Tailwind".
+
+ÉTAPE 1 — EXTRACTION
+Lis le design system du fichier : variables,
+tokens, styles, composants. Dresse le
+tableau complet avant de coder.
+
+ÉTAPE 2 — SETUP
+Mappe ces tokens dans tailwind.config
+(couleurs, fontFamily, spacing, radius).
+Si une valeur ne tombe pas sur l'échelle
+Tailwind, crée l'entrée custom. Ne l'arrondis
+jamais.
+
+ÉTAPE 3 — CODE
+React 18 + Tailwind, lucide-react pour les
+icônes, aucune lib UI.
+Un composant React par composant Pencil,
+même découpage, mêmes noms.
+Section par section, de haut en bas.
+Textes réels du design, jamais de lorem.
+
+ÉTAPE 4 — VÉRIFICATION (obligatoire)
+Screenshot de ton rendu, comparaison au
+design Pencil, liste des écarts, correction,
+re-screenshot. Tu boucles jusqu'à ce que
+les écarts restants soient justifiés.
+
+RÈGLE
+Toute ambiguïté → tu me demandes.
+Tu ne devines jamais.

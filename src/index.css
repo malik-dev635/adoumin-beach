@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futura et Avenir Next sont referencees litteralement dans le .pen (fontFamily: "Futura" /
+   "Avenir Next W1G"). Les fichiers proviennent de asset/font/ du projet. */
+@font-face {
+  font-family: 'Futura';
+  src: url('/asset/font/futura/Futura Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/asset/font/futura/Futura Book.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/asset/font/futura/Futura Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/asset/font/futura/Futura Heavy.otf') format('opentype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/asset/font/futura/Futura Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next W1G';
+  src: url('/asset/font/avenir/Avenir Next Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next W1G';
+  src: url('/asset/font/avenir/Avenir Next Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next W1G';
+  src: url('/asset/font/avenir/Avenir Next Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next W1G';
+  src: url('/asset/font/avenir/Avenir Next Demi.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next W1G';
+  src: url('/asset/font/avenir/Avenir Next Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Hauteurs de ligne par defaut de Pencil, mesurees sur les bounds des noeuds texte sans
+   lineHeight explicite (hauteur / fontSize) : Mulish 1.28, Jost 1.45, Avenir Next 1.50,
+   Futura 1.367. Elles vivent dans @layer base pour rester surchargeables par `leading-*`. */
+@layer base {
+  .font-body {
+    line-height: 1.28;
+  }
+  .font-heading {
+    line-height: 1.45;
+  }
+  .font-avenir {
+    line-height: 1.5;
+  }
+  .font-futura {
+    line-height: 1.367;
+  }
+}
+
+/* Frame `Map` (lsyKO) : 828x460 a 1440 px de large. Carte Leaflet ; ratio du design en desktop,
+   hauteur fixe au telephone. */
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  border-radius: 3px;
+  z-index: 0; /* Leaflet cree ses propres calques ; on les garde sous la navbar et les panneaux */
+}
+@media (min-width: 64rem) {
+  .map-frame {
+    height: auto;
+    aspect-ratio: 828 / 460;
+  }
+}
+/* Marqueur personnalise : Leaflet impose un fond et un cadre sur les icones par defaut */
+.adoumin-marker {
+  background: transparent;
+  border: 0;
+}
+.leaflet-container {
+  font-family: 'Avenir Next W1G', 'Avenir Next', Mulish, sans-serif;
+}
+.leaflet-control-attribution {
+  font-size: 0.625rem;
+  color: #8a94a0;
+  background: rgba(255, 255, 255, 0.8);
+}
+.leaflet-control-attribution a {
+  color: #5d6a7b;
+}
+.leaflet-bar {
+  border: 0 !important;
+  box-shadow: 0 2px 0.75rem rgba(14, 30, 61, 0.12) !important;
+}
+.leaflet-bar a {
+  color: #1c3464;
+}
+
+/* ---------------------------------------------------------------------------
+   Couche mouvement. Rien de tout cela n'existe dans le .pen (qui est statique) :
+   ce sont des etats d'interaction et des entrees au scroll ajoutes pour le web.
+   Tout est desactive si l'utilisateur demande moins d'animation.
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition-delay: var(--d, 0s);
+    will-change: opacity, transform;
+  }
+  .reveal[data-revealed='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Soulignement anime des liens de navigation */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.25rem;
+    height: 1.5px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  /* Accordeon FAQ : hauteur animee sans valeur en dur */
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .accordion-panel[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
+  .accordion-panel > div {
+    overflow: hidden;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* Halo du marqueur de la carte */
+@keyframes halo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.16;
+  }
+}
+/* Derive tres lente des bandes photo du CTA final */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}
+/* ---- Mise en place du hero Lay2 : volets, pastille, masques de texte, filet, compteurs ---- */
+/* le panneau marine se deploie depuis la droite, la photo depuis la gauche */
+@keyframes wipe-from-right {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes wipe-from-left {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+/* la pastille tombe en place avec un leger rebond */
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2.5rem) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* une ligne de texte sort de son masque (le parent est en overflow hidden) */
+@keyframes mask-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+/* un filet se trace de gauche a droite */
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+/* le filigrane arrive a son opacite de design (0.15), pas a 1 */
+@keyframes fade-watermark {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.15;
+  }
+}
+/* une etoile apparait */
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Entree directionnelle du texte des temoignages (le sens suit la fleche cliquee) */
+@keyframes glide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes glide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+}
