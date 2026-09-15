@@ -259,6 +259,17 @@
     opacity: 0.16;
   }
 }
+/* Derive horizontale du motif de vagues (menu Lay2) */
+@keyframes drift-x {
+  from {
+    mask-position: 0 0, 0 0;
+    -webkit-mask-position: 0 0, 0 0;
+  }
+  to {
+    mask-position: 38rem 0, 0 0;
+    -webkit-mask-position: 38rem 0, 0 0;
+  }
+}
 /* Derive tres lente des bandes photo du CTA final */
 @keyframes drift {
   0%,

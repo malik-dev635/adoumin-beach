@@ -26,24 +26,13 @@ import { BookButton } from './ui.jsx'
  * centre) jusqu'a couvrir l'ecran et devient le fond du menu ; les liens entrent ensuite en cascade.
  */
 
-const MENU = [
-  ['01', "L'expérience"],
-  ['02', 'Restaurant'],
-  ['03', 'Événements'],
-  ['04', 'Galerie'],
-  ['05', 'Réserver'],
-]
-const MENU_INFOS = [
-  ['HORAIRES', 'Tous les jours · 12h – 02h'],
-  ['ADRESSE', 'Cocody – Blockhauss, à gauche de la gare lagunaire SOTRA'],
-  ['CONTACT', '+225 07 78 61 68 99 · contact@adoumin.ci'],
-]
-const MENU_SOCIAL = ['Instagram', 'Facebook', 'TikTok', 'WhatsApp']
+const MENU = ["L'expérience", 'Restaurant', 'Événements', 'Galerie', 'Réserver']
 
 /**
- * Menu plein ecran. Deux colonnes : les liens numerotes a gauche, un panneau photo a droite qui
- * reprend l'univers du hero (photo, voile marine, infos pratiques, bouton). Au telephone tout
- * s'empile, la photo en dernier.
+ * Menu plein ecran, leger : fond blanc, cinq liens qui flottent, une ligne d'infos, et en bas les
+ * vagues seigaiha du footer qui derivent lentement, a peine visibles. Tout tient dans l'ecran,
+ * telephone compris — rien a faire defiler. La pastille blanche reste la graine : le cercle grandit
+ * depuis son centre.
  */
 function MenuOverlay({ open, origin, onClose }) {
   useEffect(() => {
@@ -61,19 +50,40 @@ function MenuOverlay({ open, origin, onClose }) {
     }
   }, [open, onClose])
 
-  const stagger = (i, base = 380) => ({ transitionDelay: open ? `${base + i * 55}ms` : '0ms' })
-  const enter = open ? 'translate-y-0 opacity-100' : 'translate-y-[1rem] opacity-0'
+  const enter = open ? 'translate-y-0 opacity-100' : 'translate-y-[0.75rem] opacity-0'
+  const stagger = (i) => ({ transitionDelay: open ? `${420 + i * 70}ms` : '0ms' })
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col bg-white transition-[clip-path] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+      className={`fixed inset-0 z-50 flex flex-col overflow-hidden bg-white transition-[clip-path] duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${
         open ? '' : 'pointer-events-none'
       }`}
       style={{ clipPath: `circle(${open ? '160%' : '0%'} at ${origin.x}px ${origin.y}px)` }}
       aria-hidden={!open}
     >
-      {/* barre : logo + fermer */}
-      <div className="flex shrink-0 items-center justify-between px-24 py-16 lg:px-40">
+      {/* vagues : le motif du footer en marine, discret, qui derive. L'image (lignes noires sur
+          fond transparent) sert de masque a un aplat marine ; un second masque en degrade efface
+          le haut de la bande. */}
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-marine transition-opacity duration-[1200ms] ${
+          open ? 'opacity-[0.16]' : 'opacity-0'
+        }`}
+        style={{
+          maskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 0%, #000 75%)',
+          maskSize: '38rem auto, 100% 100%',
+          maskRepeat: 'repeat, no-repeat',
+          maskComposite: 'intersect',
+          WebkitMaskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 0%, #000 75%)',
+          WebkitMaskSize: '38rem auto, 100% 100%',
+          WebkitMaskRepeat: 'repeat, no-repeat',
+          WebkitMaskComposite: 'source-in',
+          animation: 'drift-x 60s linear infinite',
+          transitionDelay: open ? '500ms' : '0ms',
+        }}
+      />
+
+      {/* barre : logo + fermer, aux memes places que dans le hero */}
+      <div className="relative flex shrink-0 items-center justify-between px-24 py-16 lg:px-40">
         <img
           src="/asset/images/Screenshot 2026-09-08 170122-Photoroom.png"
           alt="Adoumin Beach Resort"
@@ -89,69 +99,34 @@ function MenuOverlay({ open, origin, onClose }) {
         </button>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden">
-        {/* colonne liens */}
-        <div className="flex flex-col justify-between px-24 pb-24 pt-16 lg:flex-1 lg:px-32 lg:pb-32">
-          <nav className="flex flex-col">
-            {MENU.map(([n, label], i) => (
-              <a
-                key={label}
-                href="#"
-                onClick={onClose}
-                className={`group flex items-baseline gap-16 border-b border-line-3 py-12 transition-all duration-500 last:border-b-0 lg:py-14 ${enter}`}
-                style={stagger(i)}
-              >
-                <span className="font-body text-11 font-bold tracking-1.5 text-gold">{n}</span>
-                <span className="font-futura text-[2.25rem] font-light leading-1.05 text-marine transition-transform duration-300 group-hover:translate-x-[0.5rem] sm:text-48 lg:text-56">
-                  {label}
-                </span>
-                <span className="ml-auto h-6 w-6 rounded-999 bg-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </a>
-            ))}
-          </nav>
-          <div
-            className={`mt-24 flex flex-wrap items-center gap-x-20 gap-y-8 transition-all duration-500 ${enter}`}
-            style={stagger(MENU.length)}
+      {/* liens : ils flottent, un point or apparait a gauche au survol */}
+      <nav className="relative flex flex-1 flex-col justify-center gap-4 px-24 lg:px-40">
+        {MENU.map((label, i) => (
+          <a
+            key={label}
+            href="#"
+            onClick={onClose}
+            className={`group flex w-fit items-center gap-14 py-6 transition-all duration-500 lg:py-8 ${enter}`}
+            style={stagger(i)}
           >
-            {MENU_SOCIAL.map((s) => (
-              <a key={s} href="#" className="tap link-underline font-body text-13 font-semibold text-marine">
-                {s}
-              </a>
-            ))}
-            <span className="ml-auto font-body text-12 text-meta-txt">© 2026 Adoumin Beach Resort</span>
-          </div>
-        </div>
-
-        {/* panneau photo : univers du hero */}
-        <div
-          className={`relative m-24 mt-0 flex min-h-[22rem] shrink-0 flex-col justify-end overflow-hidden rounded-4 bg-marine transition-all duration-700 lg:m-0 lg:mb-32 lg:mr-40 lg:min-h-0 lg:w-[40%] ${
-            open ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ transitionDelay: open ? '450ms' : '0ms' }}
-        >
-          <img
-            src="/asset/images/Gemini_Generated_Image_gsnk92gsnk92gsnk.jpg"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-marine via-marine/60 to-marine/10" />
-          <div className="relative flex flex-col gap-20 p-24 lg:p-32">
-            <span className="font-futura text-[2rem] font-light leading-1.05 text-white lg:text-42">
-              Cocody, côté lagune
+            <span className="h-6 w-6 shrink-0 rounded-999 bg-gold opacity-0 transition-all duration-300 group-hover:opacity-100 lg:h-8 lg:w-8" />
+            <span className="-ml-20 font-futura text-[2.75rem] font-light leading-1 text-marine transition-transform duration-500 group-hover:translate-x-[1.25rem] sm:text-56 lg:text-[4.5rem]">
+              {label}
             </span>
-            <div className="flex flex-col gap-12">
-              {MENU_INFOS.map(([h, v]) => (
-                <div key={h} className="flex flex-col gap-2">
-                  <span className="font-body text-10 font-bold tracking-1.5 text-w-80">{h}</span>
-                  <span className="font-body text-14 text-white">{v}</span>
-                </div>
-              ))}
-            </div>
-            <BookButton tone="white" paddingClass="px-22 py-14">
-              Réserver une table
-            </BookButton>
-          </div>
-        </div>
+          </a>
+        ))}
+      </nav>
+
+      {/* une seule ligne : horaires, telephone */}
+      <div
+        className={`relative flex shrink-0 flex-wrap items-center gap-x-20 gap-y-6 px-24 pb-24 transition-all duration-500 lg:px-40 lg:pb-32 ${enter}`}
+        style={stagger(MENU.length)}
+      >
+        <span className="font-body text-13 text-meta-txt">Tous les jours · 12h – 02h</span>
+        <a href="tel:+2250778616899" className="tap font-body text-13 font-semibold text-marine">
+          +225 07 78 61 68 99
+        </a>
+        <span className="hidden font-body text-13 text-meta-txt sm:inline">Cocody – Blockhauss, Abidjan</span>
       </div>
     </div>
   )
