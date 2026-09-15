@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
 /**
@@ -20,15 +20,109 @@ import { Menu, X } from 'lucide-react'
  */
 
 const NAV_LEFT = ["L'expérience", 'Menu', 'Galerie']
-const NAV_MOBILE = [...NAV_LEFT, 'Événements']
+const NAV_MOBILE = [
+  ['01', "L'expérience"],
+  ['02', 'Menu'],
+  ['03', 'Galerie'],
+  ['04', 'Événements'],
+]
+
+/**
+ * Menu telephone : la barre blanche aux coins ronds descend comme un volet jusqu'a couvrir l'ecran
+ * (elle garde ses coins arrondis en bas pendant tout le mouvement), les liens arrivent en cascade,
+ * le bouton or prend toute la largeur en bas. Sa premiere ligne reprend la barre (logo au meme
+ * endroit, la croix a la place du burger) pour que rien ne saute.
+ */
+function MenuSheet({ open, onClose }) {
+  useEffect(() => {
+    if (!open) return undefined
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = scrollbar > 0 ? `${scrollbar}px` : ''
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+  }, [open, onClose])
+
+  const enter = open ? 'translate-y-0 opacity-100' : 'translate-y-[0.75rem] opacity-0'
+  const stagger = (i) => ({ transitionDelay: open ? `${260 + i * 60}ms` : '0ms' })
+
+  return (
+    <div
+      className={`fixed inset-x-0 top-0 z-50 flex h-[100svh] flex-col rounded-b-20 bg-white transition-transform duration-[650ms] ease-[cubic-bezier(0.76,0,0.24,1)] md:hidden ${
+        open ? 'translate-y-0' : 'pointer-events-none -translate-y-full'
+      }`}
+      aria-hidden={!open}
+    >
+      {/* meme ligne que la barre : croix a la place du burger, logo au centre */}
+      <div className="flex h-[4rem] shrink-0 items-center justify-between px-16">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fermer le menu"
+          className="-ml-4 flex h-40 w-40 items-center justify-center text-marine transition-transform duration-300 hover:rotate-90"
+        >
+          <X size={22} strokeWidth={2} />
+        </button>
+        <img
+          src="/asset/images/Screenshot 2026-09-08 170122-Photoroom.png"
+          alt="Adoumin Beach Resort"
+          className="h-[1.875rem] w-[6.25rem] object-contain"
+        />
+        <span className="w-40" aria-hidden="true" />
+      </div>
+
+      <nav className="flex flex-1 flex-col justify-center gap-4 px-24">
+        {NAV_MOBILE.map(([n, label], i) => (
+          <a
+            key={label}
+            href="#"
+            onClick={onClose}
+            className={`group flex items-baseline gap-14 py-10 transition-all duration-500 ${enter}`}
+            style={stagger(i)}
+          >
+            <span className="font-body text-11 font-bold tracking-1.5 text-gold">{n}</span>
+            <span className="font-futura text-[2.5rem] font-medium leading-1 text-marine transition-transform duration-300 group-active:translate-x-[0.5rem]">
+              {label}
+            </span>
+          </a>
+        ))}
+      </nav>
+
+      <div
+        className={`flex flex-col gap-14 px-24 pb-24 transition-all duration-500 ${enter}`}
+        style={stagger(NAV_MOBILE.length)}
+      >
+        <div className="flex items-center justify-between">
+          <span className="font-body text-12 text-body-txt">Tous les jours · 12h – 02h</span>
+          <a href="tel:+2250778616899" className="font-body text-12 font-semibold text-marine">
+            +225 07 78 61 68 99
+          </a>
+        </div>
+        <a
+          href="#"
+          onClick={onClose}
+          className="flex w-full items-center justify-center rounded-40 bg-gold py-15 font-body text-15 font-bold text-marine"
+        >
+          Réserver
+        </a>
+      </div>
+    </div>
+  )
+}
 
 /**
  * Barre de navigation. En desktop elle reprend la frame `Nav` du .pen (liens a gauche, logo au
- * centre, Evenements + bouton a droite). Sous 768 px le design ne prevoit rien : on passe a une
- * barre telephone — bouton menu, logo, CTA — avec un panneau deroulant plein largeur.
+ * centre, Evenements + bouton a droite). Sous 768 px le design ne prevoit rien : barre telephone
+ * (menu, logo, CTA) et volet `MenuSheet`.
  */
 function NavBar() {
   const [open, setOpen] = useState(false)
+  const close = useCallback(() => setOpen(false), [])
 
   return (
     <div className="relative">
@@ -36,12 +130,12 @@ function NavBar() {
         {/* Bouton menu (telephone uniquement) */}
         <button
           type="button"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpen(true)}
           aria-expanded={open}
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label="Ouvrir le menu"
           className="-ml-4 flex h-40 w-40 items-center justify-center text-marine md:hidden"
         >
-          {open ? <X size={22} strokeWidth={2} /> : <Menu size={22} strokeWidth={2} />}
+          <Menu size={22} strokeWidth={2} />
         </button>
 
         <div className="hidden items-center gap-22 md:flex">
@@ -80,25 +174,7 @@ function NavBar() {
         </div>
       </div>
 
-      {/* Panneau deroulant telephone */}
-      <div
-        className={`absolute inset-x-0 top-full z-20 overflow-hidden rounded-b-20 bg-white transition-all duration-400 ease-[cubic-bezier(0.22,0.61,0.36,1)] md:hidden ${
-          open ? 'max-h-[17.5rem] opacity-100' : 'pointer-events-none max-h-0 opacity-0'
-        }`}
-      >
-        <nav className="flex flex-col px-16 pb-18 pt-2">
-          {NAV_MOBILE.map((label) => (
-            <a
-              key={label}
-              href="#"
-              onClick={() => setOpen(false)}
-              className="border-b border-row-line py-14 font-body text-15 font-medium text-marine last:border-b-0"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-      </div>
+      <MenuSheet open={open} onClose={close} />
     </div>
   )
 }

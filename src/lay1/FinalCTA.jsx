@@ -44,12 +44,24 @@ function Strip({ images, left, rotate, delay = '0s' }) {
 
 export default function FinalCTA() {
   return (
-    <section className="relative flex w-full items-center justify-center overflow-hidden bg-cta-bg px-24 py-[4rem] lg:h-600 lg:px-0 lg:py-0">
+    <section className="relative flex w-full flex-col items-center justify-center gap-32 overflow-hidden bg-cta-bg py-[3rem] lg:h-600 lg:gap-0 lg:px-0 lg:py-0">
       <Strip images={STRIP_LEFT} left="4.8611%" rotate={-10} />
       <Strip images={STRIP_RIGHT} left="79.8611%" rotate={10} delay="-8s" />
 
+      {/* Sous 1024 px les bandes inclinees n'ont pas la place : les six photos defilent en bandeau */}
+      <div className="reveal flex w-full snap-x snap-mandatory gap-12 overflow-x-auto px-24 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+        {[...STRIP_LEFT, ...STRIP_RIGHT].map((src) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="h-[7rem] w-[8.75rem] shrink-0 snap-start rounded-14 object-cover"
+          />
+        ))}
+      </div>
+
       {/* Content : x400 y170 w640 */}
-      <div className="reveal relative flex w-full flex-col items-center gap-24 lg:absolute lg:left-[27.7778%] lg:top-[28.3333%] lg:w-[44.4444%]">
+      <div className="reveal relative flex w-full flex-col items-center gap-24 px-24 lg:absolute lg:px-0 lg:left-[27.7778%] lg:top-[28.3333%] lg:w-[44.4444%]">
         <div className="flex items-center gap-8">
           <div className="flex gap-2">
             <Star color="#ffcd03" />

@@ -67,7 +67,7 @@ export default function Carte() {
               href={ITINERAIRE_URL}
               target="_blank"
               rel="noreferrer"
-              className="group flex w-fit items-center gap-8 bg-marine px-26 py-15 transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#16294F]"
+              className="group flex w-fit items-center gap-8 rounded-40 bg-marine px-26 py-15 transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#16294F]"
             >
               <span className="font-body text-15 font-semibold text-white">Itinéraire</span>
               <ArrowUpRight

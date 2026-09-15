@@ -71,7 +71,7 @@ export default function Footer() {
       <img
         src="/asset/images/Logo_Jewi-Photoroom.png"
         alt=""
-        className="pointer-events-none absolute right-[-8%] top-[1rem] h-[52%] w-auto object-contain opacity-15 lg:h-[110.1089%] lg:w-[37.6389%] lg:object-cover lg:[left:67.7083%] lg:[top:5.4432%] lg:[right:auto]"
+        className="pointer-events-none absolute right-[-14%] top-[4%] h-[96%] w-auto object-contain opacity-15 lg:h-[110.1089%] lg:w-[37.6389%] lg:object-cover lg:[left:67.7083%] lg:[top:5.4432%] lg:[right:auto]"
       />
 
       {/* Top */}
