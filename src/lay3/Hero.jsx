@@ -113,6 +113,12 @@ export default function Hero() {
         style={{ animationDelay: T.photo }}
       />
       <div className="absolute inset-0 bg-tint-3" />
+      {/* Sous 1024 px le titre et la nav tombent sur la photo : voile marine en degrade, dense en
+          haut, qui s'efface vers la carte. Le desktop garde la teinte a 12 % du design. */}
+      <div
+        className="absolute inset-0 lg:hidden"
+        style={{ background: 'linear-gradient(180deg, rgba(14,30,61,0.72) 0%, rgba(14,30,61,0.45) 42%, rgba(14,30,61,0.10) 70%, rgba(14,30,61,0) 100%)' }}
+      />
 
       {/* Badge : x48 y40 -> 3.33 % / 4.65 % */}
       <a
