@@ -330,8 +330,23 @@
   }
 }
 
+/* Echelle grand ecran. Tout le site est en rem : au-dela de 1440 px (la largeur de la maquette) la
+   racine grandit avec la fenetre (16 px a 1440 = 1.1111 vw), donc marges, textes et largeurs suivent
+   proportionnellement — le conteneur de 90 rem fait exactement 100 vw, plus de bandes vides. Plafond a
+   2560 px pour ne pas devenir absurde sur un ecran 4K. */
 html {
   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+@media (min-width: 1440px) {
+  html {
+    font-size: 1.1111vw;
+  }
+}
+@media (min-width: 2560px) {
+  html {
+    font-size: 28.44px;
+  }
 }
 
 body {

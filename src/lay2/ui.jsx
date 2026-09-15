@@ -51,28 +51,20 @@ export function UnderlineLink({ children, href = '#', className = '' }) {
 
 /**
  * Bouton `Book`. `tone` = 'marine' (fond marine, texte blanc) ou 'white' (fond blanc, texte marine).
- * Au survol le bouton s'inverse : la couleur opposee monte depuis le bas (un calque qui se deploie),
- * texte et fleche basculent, et la bordure garde la couleur d'origine pour que le bouton reste
- * dessine une fois inverse.
+ * Au survol le fond devient transparent : il ne reste que le filet (couleur d'origine du fond) et le
+ * texte, qui prend cette meme couleur. Le filet est un ring interieur, la taille ne bouge pas.
  */
 export function BookButton({ children, tone = 'marine', href = '#', paddingClass = 'px-26 py-15' }) {
   const isMarine = tone === 'marine'
   return (
     <a
       href={href}
-      className={`group relative isolate inline-flex w-fit items-center gap-8 overflow-hidden border ${paddingClass} ${
-        isMarine ? 'border-marine bg-marine' : 'border-white bg-white'
+      className={`group inline-flex w-fit items-center gap-8 ring-1 ring-inset transition-colors duration-[400ms] ${paddingClass} ${
+        isMarine ? 'bg-marine ring-marine hover:bg-transparent' : 'bg-white ring-white hover:bg-transparent'
       }`}
     >
-      {/* calque d'inversion : il monte depuis le bas au survol */}
       <span
-        aria-hidden="true"
-        className={`absolute inset-0 -z-10 origin-bottom scale-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] group-hover:scale-y-100 ${
-          isMarine ? 'bg-white' : 'bg-marine'
-        }`}
-      />
-      <span
-        className={`font-body text-15 font-semibold transition-colors duration-500 ${
+        className={`font-body text-15 font-semibold transition-colors duration-[400ms] ${
           isMarine ? 'text-white group-hover:text-marine' : 'text-marine group-hover:text-white'
         }`}
       >
@@ -81,7 +73,7 @@ export function BookButton({ children, tone = 'marine', href = '#', paddingClass
       <ArrowUpRight
         size={18}
         strokeWidth={2}
-        className={`transition-all duration-500 group-hover:translate-x-[3px] group-hover:-translate-y-[3px] ${
+        className={`transition-all duration-[400ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] ${
           isMarine ? 'text-white group-hover:text-marine' : 'text-marine group-hover:text-white'
         }`}
       />

@@ -106,7 +106,7 @@ function MenuSheet({ open, onClose }) {
         <a
           href="#"
           onClick={onClose}
-          className="flex w-full items-center justify-center rounded-40 bg-gold py-15 font-body text-15 font-bold text-marine"
+          className="flex w-full items-center justify-center rounded-40 bg-gold py-15 font-body text-15 font-bold text-marine ring-1 ring-inset ring-gold transition-colors duration-[400ms] hover:bg-transparent"
         >
           Réserver
         </a>
@@ -167,7 +167,7 @@ function NavBar() {
           </a>
           <button
             type="button"
-            className="flex items-center rounded-40 bg-gold px-16 py-10 font-body text-13 font-bold text-marine transition-all duration-300 hover:-translate-y-[2px] hover:brightness-95 active:translate-y-0 sm:px-20 sm:py-11 sm:text-14"
+            className="flex items-center rounded-40 bg-gold px-16 py-10 font-body text-13 font-bold text-marine ring-1 ring-inset ring-gold transition-colors duration-[400ms] hover:bg-transparent sm:px-20 sm:py-11 sm:text-14"
           >
             Réserver
           </button>

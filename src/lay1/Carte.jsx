@@ -67,13 +67,13 @@ export default function Carte() {
               href={ITINERAIRE_URL}
               target="_blank"
               rel="noreferrer"
-              className="group flex w-fit items-center gap-8 rounded-40 bg-marine px-26 py-15 transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#16294F]"
+              className="group flex w-fit items-center gap-8 rounded-40 bg-marine px-26 py-15 ring-1 ring-inset ring-marine transition-colors duration-[400ms] hover:bg-transparent"
             >
-              <span className="font-body text-15 font-semibold text-white">Itinéraire</span>
+              <span className="font-body text-15 font-semibold text-white transition-colors duration-[400ms] group-hover:text-marine">Itinéraire</span>
               <ArrowUpRight
                 size={18}
                 strokeWidth={2}
-                className="text-white transition-transform duration-300 group-hover:translate-x-[3px] group-hover:-translate-y-[3px]"
+                className="text-white transition-all duration-[400ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] group-hover:text-marine"
               />
             </a>
           </div>

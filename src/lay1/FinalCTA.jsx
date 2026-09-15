@@ -87,13 +87,13 @@ export default function FinalCTA() {
         <div className="flex flex-wrap items-center justify-center gap-14">
           <button
             type="button"
-            className="rounded-40 bg-gold px-28 py-15 font-body text-15 font-bold text-marine transition-all duration-300 hover:-translate-y-[3px] hover:brightness-95 active:translate-y-0"
+            className="rounded-40 bg-gold px-28 py-15 font-body text-15 font-bold text-marine ring-1 ring-inset ring-gold transition-colors duration-[400ms] hover:bg-transparent"
           >
             Réserver maintenant
           </button>
           <a
             href="tel:+2250778616899"
-            className="rounded-40 border border-line-2 bg-white px-28 py-15 font-body text-15 font-semibold text-marine transition-all duration-300 hover:-translate-y-[3px] hover:border-marine active:translate-y-0"
+            className="rounded-40 border border-line-2 bg-white px-28 py-15 font-body text-15 font-semibold text-marine transition-colors duration-[400ms] hover:border-marine hover:bg-transparent"
           >
             Nous appeler
           </a>
