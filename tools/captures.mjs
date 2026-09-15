@@ -38,6 +38,10 @@ for (const [pathname, name, w, h] of [
   ['/', 'lay1-desktop-full', 1440, 900],
 ]) {
   const p = await open(pathname, w, h)
+  // la capture pleine page redimensionne la fenetre, ce qui relance les animations d'entree :
+  // on les fige a leur etat final avant de capturer
+  await p.addStyleTag({ content: '*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition-duration:0s!important;transition-delay:0s!important}' })
+  await new Promise((r) => setTimeout(r, 400))
   await p.screenshot({ path: path.join(OUT, name + '.png'), fullPage: true })
   console.log('ok', name)
   await p.close()
