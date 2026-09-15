@@ -99,6 +99,7 @@ function MenuOverlay({ open, origin, onClose }) {
         </button>
       </div>
 
+      <div className="relative flex min-h-0 flex-1">
       {/* liens : ils flottent, un point or apparait a gauche au survol */}
       <nav className="relative flex flex-1 flex-col justify-center gap-4 px-24 lg:px-40">
         {MENU.map((label, i) => (
@@ -116,6 +117,37 @@ function MenuOverlay({ open, origin, onClose }) {
           </a>
         ))}
       </nav>
+
+      {/* a droite (desktop) : un cercle d'eau — la pastille en grand, remplie des memes vagues,
+          avec le slogan. Il entre en grandissant, apres les liens. */}
+      <div className="hidden flex-1 items-center justify-center pr-40 lg:flex">
+        <div
+          className={`relative flex h-[26rem] w-[26rem] items-center justify-center overflow-hidden rounded-999 ring-1 ring-inset ring-marine/15 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            open ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
+          }`}
+          style={{ transitionDelay: open ? '650ms' : '0ms' }}
+        >
+          <div
+            className="absolute inset-0 bg-marine opacity-[0.14]"
+            style={{
+              maskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 15%, #000 80%)',
+              maskSize: '22rem auto, 100% 100%',
+              maskRepeat: 'repeat, no-repeat',
+              maskComposite: 'intersect',
+              WebkitMaskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 15%, #000 80%)',
+              WebkitMaskSize: '22rem auto, 100% 100%',
+              WebkitMaskRepeat: 'repeat, no-repeat',
+              WebkitMaskComposite: 'source-in',
+              animation: 'drift-x 45s linear infinite',
+            }}
+          />
+          <div className="relative flex flex-col items-center gap-6 text-center">
+            <span className="font-script text-[2.75rem] font-light leading-1 text-marine">The Place To Be</span>
+            <span className="font-body text-12 font-bold tracking-2 text-meta-txt">COCODY · BLOCKHAUSS</span>
+          </div>
+        </div>
+      </div>
+      </div>
 
       {/* une seule ligne : horaires, telephone */}
       <div
