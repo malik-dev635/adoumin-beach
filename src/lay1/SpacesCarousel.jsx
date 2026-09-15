@@ -153,7 +153,7 @@ export default function SpacesCarousel() {
         />
       </div>
 
-      <div className="reveal relative aspect-[600/460] w-full lg:aspect-auto lg:h-460">
+      <div className="reveal relative aspect-[4/5] w-full sm:aspect-[600/460] lg:aspect-auto lg:h-460">
         {[index - 2, index - 1, index, index + 1, index + 2].map((p) => (
           <Card
             key={p}
@@ -168,7 +168,7 @@ export default function SpacesCarousel() {
           type="button"
           aria-label="Espace précédent"
           onClick={() => setIndex((i) => i - 1)}
-          className="group absolute left-8 top-[44.3478%] z-10 flex h-44 w-44 items-center justify-center rounded-26 border-2 border-white bg-marine transition-all duration-300 hover:scale-110 hover:bg-[#16294F] active:scale-95 sm:h-52 sm:w-52 lg:left-[24.53125%]"
+          className="group absolute left-12 top-[46%] z-10 flex h-44 w-44 items-center justify-center rounded-26 border-2 border-white bg-marine transition-all duration-300 hover:scale-110 hover:bg-[#16294F] active:scale-95 sm:h-52 sm:w-52 sm:top-[44.3478%] lg:left-[24.53125%]"
         >
           <ArrowLeft
             size={22}
@@ -180,7 +180,7 @@ export default function SpacesCarousel() {
           type="button"
           aria-label="Espace suivant"
           onClick={() => setIndex((i) => i + 1)}
-          className="group absolute right-8 top-[44.3478%] z-10 flex h-44 w-44 items-center justify-center rounded-26 border-2 border-white bg-marine transition-all duration-300 hover:scale-110 hover:bg-[#16294F] active:scale-95 sm:h-52 sm:w-52 lg:left-[71.40625%] lg:right-auto"
+          className="group absolute right-12 top-[46%] z-10 flex h-44 w-44 items-center justify-center rounded-26 border-2 border-white bg-marine transition-all duration-300 hover:scale-110 hover:bg-[#16294F] active:scale-95 sm:h-52 sm:w-52 sm:top-[44.3478%] lg:left-[71.40625%] lg:right-auto"
         >
           <ArrowRight
             size={22}

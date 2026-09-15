@@ -66,13 +66,12 @@ function Cols() {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden bg-footer-bg px-24 py-[3.5rem] lg:h-643 lg:px-0 lg:py-0">
+    <footer className="relative w-full overflow-hidden bg-footer-bg px-24 pb-0 pt-[3.5rem] lg:h-643 lg:px-0 lg:py-0">
       {/* Hero Image : logo en filigrane, opacity 0.15 */}
       <img
         src="/asset/images/Logo_Jewi-Photoroom.png"
         alt=""
-        className="pointer-events-none absolute rounded-4 object-cover opacity-15"
-        style={{ left: '67.7083%', top: '5.4432%', width: '37.6389%', height: '110.1089%' }}
+        className="pointer-events-none absolute right-[-8%] top-[1rem] h-[52%] w-auto object-contain opacity-15 lg:h-[110.1089%] lg:w-[37.6389%] lg:object-cover lg:[left:67.7083%] lg:[top:5.4432%] lg:[right:auto]"
       />
 
       {/* Top */}
@@ -93,8 +92,8 @@ export default function Footer() {
       </div>
 
       {/* Wordmark */}
-      <div className="reveal relative mt-40 lg:absolute lg:left-[9.6528%] lg:top-[69.984%] lg:mt-0">
-        <span className="font-futura text-[18vw] font-light leading-0.9 tracking-[-0.25rem] text-white lg:text-250">
+      <div className="reveal relative mt-40 flex justify-center lg:absolute lg:left-[9.6528%] lg:top-[69.984%] lg:mt-0 lg:block">
+        <span className="block font-futura text-[19vw] font-light leading-[0.78] tracking-[-0.25rem] text-white lg:leading-0.9 lg:text-250">
           ADOUMIN
         </span>
       </div>

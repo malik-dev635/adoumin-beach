@@ -65,9 +65,9 @@ export default function Testimonials() {
         </p>
       </div>
 
-      <div className="reveal flex w-full flex-col items-center gap-48 rounded-24 bg-surface-1 p-56 lg:flex-row">
+      <div className="reveal flex w-full flex-col items-center gap-28 rounded-24 bg-surface-1 p-24 sm:gap-48 sm:p-56 lg:flex-row">
         <div className="flex w-full flex-1 flex-col gap-24">
-          <span className="font-heading text-110 font-bold leading-0.7 text-line-2">&ldquo;</span>
+          <span className="font-heading text-[3.5rem] font-bold leading-0.7 text-line-2 sm:text-110">&ldquo;</span>
           <p
             key={index}
             className={`${glide} font-avenir text-30 font-medium leading-1.3 text-ink`}
@@ -107,7 +107,7 @@ export default function Testimonials() {
             directionnel que la citation. */}
         <div
           key={index}
-          className={`relative flex aspect-[340/460] w-full shrink-0 flex-col justify-end overflow-hidden rounded-18 bg-cover bg-center p-22 lg:aspect-auto lg:h-460 lg:w-340 ${glide}`}
+          className={`relative flex aspect-[4/3] w-full shrink-0 flex-col justify-end overflow-hidden rounded-18 bg-cover bg-[center_30%] p-22 sm:aspect-[340/460] sm:max-w-[21.25rem] lg:aspect-auto lg:h-460 lg:w-340 lg:max-w-none ${glide}`}
           style={{ backgroundImage: `url('${current.img}')` }}
         >
           <div

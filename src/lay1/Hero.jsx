@@ -32,7 +32,7 @@ function NavBar() {
 
   return (
     <div className="relative">
-      <div className="flex h-53 w-full items-center justify-between rounded-b-20 bg-white px-16 md:px-24">
+      <div className="flex h-[4rem] w-full items-center justify-between rounded-b-20 bg-white px-16 md:px-24 lg:h-53">
         {/* Bouton menu (telephone uniquement) */}
         <button
           type="button"
@@ -73,7 +73,7 @@ function NavBar() {
           </a>
           <button
             type="button"
-            className="flex items-center rounded-40 bg-gold px-14 py-9 font-body text-13 font-bold text-marine transition-all duration-300 hover:-translate-y-[2px] hover:brightness-95 active:translate-y-0 sm:px-20 sm:py-11 sm:text-14"
+            className="flex items-center rounded-40 bg-gold px-16 py-10 font-body text-13 font-bold text-marine transition-all duration-300 hover:-translate-y-[2px] hover:brightness-95 active:translate-y-0 sm:px-20 sm:py-11 sm:text-14"
           >
             Réserver
           </button>
