@@ -8,6 +8,7 @@ const VARIANT = process.argv[4] || 'lay1'
 // hauteurs des sections lues dans le .pen (bounds MCP)
 const LAYOUTS = {
   lay1: { path: '/', sections: ['Hero', 'Experience', 'Restaurant List', 'Spaces Carousel', 'Testimonials', 'FAQ', 'Carte', 'Final CTA', 'Footer'], pen: [820, 1114, 964, 750, 862, 676, 754, 600, 643] },
+  lay3: { path: '/lay3', sections: ['Hero', 'Intro', 'Experience', 'Restaurant', 'Events', 'Gallery', 'Reviews', 'FAQ', 'Infos', 'Carte', 'CTA + Footer'], pen: [860, 489, 753, 840, 840, 1057, 562, 626, 512, 845, 1103] },
   lay2: { path: '/lay2', sections: ['Hero', 'Intro', 'Experience', 'Restaurant', 'Events', 'Gallery', 'Reviews', 'FAQ', 'Infos', 'Carte', 'CTA + Footer'], pen: [900, 489, 753, 840, 840, 1057, 562, 626, 512, 845, 1103] },
 }
 const { path: PATH, sections: SECTIONS, pen: PEN } = LAYOUTS[VARIANT]
