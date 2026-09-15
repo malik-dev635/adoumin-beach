@@ -132,16 +132,17 @@ export default function Hero() {
 
       {/* Nav : x1140 y44 w252, alignee a droite -> right 3.33 % */}
       <nav
-        className="absolute right-[4%] top-[4.2%] flex animate-[rise-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-end gap-12"
+        className="absolute right-[4%] top-[4.2%] flex animate-[rise-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-end gap-14 lg:right-[3.33%] lg:top-[5.1%]"
         style={{ animationDelay: T.nav }}
       >
         {/* RESERVER est l'action : pilule au filet creme. Les deux autres : point or + filet fin. */}
+        {/* la pilule deborde a droite (-mr = padding) : le texte reste cale sur la grille a x1392,
+            et sa hauteur ajoute 8 px au bloc de 27 du design, pas plus */}
         <a
           href="#"
-          className="group inline-flex items-center gap-10 rounded-999 px-20 py-8 font-futura text-20 font-medium tracking-1 text-cream ring-1 ring-inset ring-cream/70 transition-all duration-300 hover:ring-gold"
+          className="-mr-14 inline-flex items-center rounded-999 px-14 py-[0.25rem] font-futura text-20 font-medium tracking-1 text-cream ring-1 ring-inset ring-cream/70 transition-all duration-300 hover:ring-gold"
         >
           RESERVER
-          <span className="h-6 w-6 rounded-999 bg-gold transition-transform duration-300 group-hover:translate-x-[0.25rem]" />
         </a>
         <a
           href="#"
@@ -184,7 +185,7 @@ export default function Hero() {
         className="absolute inset-x-0 bottom-0 flex animate-[wipe-from-right_0.9s_cubic-bezier(0.76,0,0.24,1)_both] flex-col justify-between gap-24 bg-marine px-24 py-20 lg:inset-x-auto lg:bottom-[3.02%] lg:right-[1.74%] lg:top-[48.6%] lg:w-[35.9%] lg:px-30"
         style={{ animationDelay: T.card }}
       >
-        <div className="flex flex-col gap-22 lg:w-450">
+        <div className="flex flex-col gap-22 lg:mt-[1.8125rem] lg:w-450">
           <div className="flex flex-col">
             <MaskedLine
               delay={T.h1}
