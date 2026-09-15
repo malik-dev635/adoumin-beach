@@ -334,7 +334,13 @@ export default function Hero() {
           alt=""
           className="absolute inset-0 h-full w-full object-cover lg:hidden"
         />
-        <div className="absolute inset-0 bg-marine/80 lg:hidden" />
+        {/* voile telephone : 40 % partout pour garder la photo lisible, plus dense vers le bas ou
+            se trouve la Stat Bar */}
+        <div className="absolute inset-0 bg-marine/40 lg:hidden" />
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{ background: 'linear-gradient(180deg, rgba(28,52,100,0.15) 0%, rgba(28,52,100,0.05) 45%, rgba(28,52,100,0.55) 100%)' }}
+        />
 
         <MenuDot onOpen={openMenu} buttonRef={dotRef} />
 
