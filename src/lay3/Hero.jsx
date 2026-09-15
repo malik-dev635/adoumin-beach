@@ -126,22 +126,29 @@ export default function Hero() {
 
       {/* Nav : x1140 y44 w252, alignee a droite -> right 3.33 % */}
       <nav
-        className="absolute right-[4%] top-[4.2%] flex animate-[rise-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-end gap-14"
+        className="absolute right-[4%] top-[4.2%] flex animate-[rise-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both] flex-col items-end gap-12"
         style={{ animationDelay: T.nav }}
       >
-        <a href="#" className="link-underline font-futura text-20 font-medium tracking-1 text-cream">
+        {/* RESERVER est l'action : pilule au filet creme. Les deux autres : point or + filet fin. */}
+        <a
+          href="#"
+          className="group inline-flex items-center gap-10 rounded-999 px-20 py-8 font-futura text-20 font-medium tracking-1 text-cream ring-1 ring-inset ring-cream/70 transition-all duration-300 hover:ring-gold"
+        >
           RESERVER
+          <span className="h-6 w-6 rounded-999 bg-gold transition-transform duration-300 group-hover:translate-x-[0.25rem]" />
         </a>
         <a
           href="#"
-          className="link-underline font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
+          className="link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
         >
+          <span className="h-5 w-5 rounded-999 bg-gold" />
           EVENEMENT
         </a>
         <a
           href="#"
-          className="link-underline font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
+          className="link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
         >
+          <span className="h-5 w-5 rounded-999 bg-gold" />
           CONTACT
         </a>
       </nav>
