@@ -82,10 +82,10 @@ export default function Carte() {
               href={YANGO_URL}
               target="_blank"
               rel="noreferrer"
-              className="group flex w-fit items-center gap-8 rounded-40 bg-yango px-26 py-15 ring-1 ring-inset ring-yango transition-colors duration-[400ms] hover:bg-transparent"
+              className="group flex w-fit items-center gap-8 rounded-40 bg-transparent px-26 py-15 ring-1 ring-inset ring-yango transition-colors duration-[400ms] hover:bg-yango"
             >
-              <Car size={18} strokeWidth={2} className="text-white transition-colors duration-[400ms] group-hover:text-yango" />
-              <span className="font-body text-15 font-semibold text-white transition-colors duration-[400ms] group-hover:text-yango">Commander un Yango</span>
+              <Car size={18} strokeWidth={2} className="text-yango transition-colors duration-[400ms] group-hover:text-white" />
+              <span className="font-body text-15 font-semibold text-yango transition-colors duration-[400ms] group-hover:text-white">Commander un Yango</span>
             </a>
             </div>
           </div>

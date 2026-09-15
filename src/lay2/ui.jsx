@@ -54,7 +54,7 @@ export function UnderlineLink({ children, href = '#', className = '' }) {
  *  - 'marine'  : fond marine, texte blanc — au survol fond transparent, filet marine, texte marine
  *  - 'white'   : fond blanc, texte marine (pour fond sombre) — au survol transparent, filet et texte blancs
  *  - 'outline' : contour marine sur fond clair — au survol se remplit de marine
- *  - 'yango'   : rouge Yango, texte blanc — au survol transparent, filet et texte rouges
+ *  - 'yango'   : contour et texte rouge Yango — au survol se remplit de rouge, texte blanc
  * Le filet est un ring interieur, la taille ne bouge pas.
  */
 export function BookButton({ children, tone = 'marine', href = '#', paddingClass = 'px-26 py-15' }) {
@@ -72,8 +72,8 @@ export function BookButton({ children, tone = 'marine', href = '#', paddingClass
       text: 'text-marine group-hover:text-white',
     },
     yango: {
-      box: 'bg-yango ring-yango hover:bg-transparent',
-      text: 'text-white group-hover:text-yango',
+      box: 'bg-transparent ring-yango hover:bg-yango',
+      text: 'text-yango group-hover:text-white',
     },
   }[tone]
   return (
