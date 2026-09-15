@@ -8,6 +8,8 @@ import useCountUp from '../shared/useCountUp.js'
  *  - Nav   : x1140 y44 w252, colonne alignee a droite, gap 14 —
  *            RESERVER Futura 20/500 ls 1 creme ; EVENEMENT, CONTACT Futura 13/500 ls 1.5 creme 80 %
  *  - Title : y70, centre — ADOUMIN / BEACH Futura 130/300 ls 6 lh 0.92 blanc, « Resort » Kalam 82/300
+ *            (en desktop la taille est aussi plafonnee par la hauteur de l'ecran — 14.4 vh / 9 vh —
+ *            sinon sur un ecran peu haut le titre descend sur la carte)
  *  - card_order : x898 y418 517x416, fill marine, padding [20,30], space_between —
  *            Heading Block (w450, gap 22) : titre 62/300 lh 0.98 ; Stat Bar (w462, filet haut #ded8ce80,
  *            padding-top 26, gap 28) : desc 258 px 15 lh 1.45, note 4,1 + etoiles, 120+ Avis
@@ -161,20 +163,20 @@ export default function Hero() {
       </nav>
 
       {/* Title : y70, centre. Lettres en Futura Light, « Resort » en Kalam. */}
-      <div className="absolute left-0 right-0 top-[19%] flex flex-col items-center text-center lg:top-[8.14%]">
+      <div className="absolute left-0 right-0 top-[9.5rem] flex flex-col items-center text-center lg:top-[8.14%]">
         <MaskedLine
           delay={T.l1}
-          className="font-futura text-[13vw] font-light leading-0.92 tracking-6 text-white lg:text-130"
+          className="font-futura text-[13vw] font-light leading-0.92 tracking-6 text-white lg:text-[min(8.125rem,14.4vh)]"
         >
           ADOUMIN
         </MaskedLine>
         <MaskedLine
           delay={T.l2}
-          className="font-futura text-[13vw] font-light leading-0.92 tracking-6 text-white lg:text-130"
+          className="font-futura text-[13vw] font-light leading-0.92 tracking-6 text-white lg:text-[min(8.125rem,14.4vh)]"
         >
           BEACH
         </MaskedLine>
-        <MaskedLine delay={T.l3} className="font-script text-[8vw] font-light leading-1 text-white lg:text-82">
+        <MaskedLine delay={T.l3} className="font-script text-[8vw] font-light leading-1 text-white lg:text-[min(5.125rem,9vh)]">
           Resort
         </MaskedLine>
       </div>
