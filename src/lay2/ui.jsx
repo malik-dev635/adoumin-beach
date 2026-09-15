@@ -57,7 +57,7 @@ export function UnderlineLink({ children, href = '#', className = '' }) {
  *  - 'yango'   : contour et texte rouge Yango — au survol se remplit de rouge, texte blanc
  * Le filet est un ring interieur, la taille ne bouge pas.
  */
-export function BookButton({ children, tone = 'marine', href = '#', paddingClass = 'px-26 py-15' }) {
+export function BookButton({ children, tone = 'marine', href = '#', paddingClass = 'px-26 py-15', onClick }) {
   const styles = {
     marine: {
       box: 'bg-marine ring-marine hover:bg-transparent',
@@ -79,6 +79,7 @@ export function BookButton({ children, tone = 'marine', href = '#', paddingClass
   return (
     <a
       href={href}
+      onClick={onClick}
       className={`group inline-flex w-fit items-center gap-8 ring-1 ring-inset transition-colors duration-[400ms] ${paddingClass} ${styles.box}`}
     >
       <span className={`font-body text-15 font-semibold transition-colors duration-[400ms] ${styles.text}`}>

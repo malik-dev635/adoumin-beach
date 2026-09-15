@@ -1,5 +1,6 @@
 import { ArrowUpRight, Car } from 'lucide-react'
 import MapLeaflet, { ITINERAIRE_URL, YANGO_URL } from '../shared/MapLeaflet.jsx'
+import { YangoModal, useYango } from '../shared/Yango.jsx'
 import { Badge, Title } from './ui.jsx'
 
 /**
@@ -19,6 +20,8 @@ const INFOS = [
 ]
 
 export default function Carte() {
+  const yango = useYango()
+
   return (
     <section className="flex w-full flex-col gap-44 bg-white px-96 py-[3.5rem] sm:py-80">
       <div className="reveal flex w-full flex-col items-center gap-16">
@@ -80,8 +83,7 @@ export default function Carte() {
             {/* Yango : l'app de VTC d'Abidjan, une course vers le resort en un tap */}
             <a
               href={YANGO_URL}
-              target="_blank"
-              rel="noreferrer"
+              onClick={yango.onClick}
               className="group flex w-fit items-center gap-8 rounded-40 bg-transparent px-26 py-15 ring-1 ring-inset ring-yango transition-colors duration-[400ms] hover:bg-yango"
             >
               <Car size={18} strokeWidth={2} className="text-yango transition-colors duration-[400ms] group-hover:text-white" />
@@ -91,6 +93,7 @@ export default function Carte() {
           </div>
         </div>
       </div>
+      <YangoModal open={yango.open} onClose={yango.close} radiusClass="rounded-24" />
     </section>
   )
 }
