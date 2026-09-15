@@ -3,8 +3,8 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 /**
- * Carte reelle partagee par les variantes : Leaflet + fond OpenStreetMap standard (carte « normale »,
- * en couleurs, gratuite avec attribution, sans cle API). Le marqueur reprend le noeud `Marker` du design :
+ * Carte reelle partagee par les variantes : Leaflet + fond Esri "World Light Gray" (clair, epure,
+ * gratuit avec attribution, sans cle API). Le marqueur reprend le noeud `Marker` du design :
  * pastille marine 48 px, icone map-pin, halo or qui pulse, etiquette blanche en dessous.
  * Position : Adoumin Beach Resort, pointe de Blockhauss (Cocody) sur la lagune Ebrie.
  */
@@ -14,8 +14,10 @@ export const ITINERAIRE_URL = `https://www.google.com/maps/dir/?api=1&destinatio
 export const YANGO_URL =
   'https://yango.go.link/route?end-lat=5.3215193&end-lon=-4.0018253&ref=malik-dev&lang=fr&adj_deeplink_js=1'
 
-const TUILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+const TUILES =
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+const ATTRIBUTION =
+  'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
 /* Icone map-pin de lucide en SVG inline : le marqueur Leaflet est du HTML brut */
 const PIN_SVG =
@@ -51,7 +53,7 @@ export default function MapLeaflet({ className = 'map-frame bg-map-bg', zoom = 1
       scrollWheelZoom: false, // ne pas confisquer le scroll de la page
     })
     L.control.zoom({ position: 'bottomright' }).addTo(map)
-    L.tileLayer(TUILES, { attribution: ATTRIBUTION, maxZoom: 19 }).addTo(map)
+    L.tileLayer(TUILES, { attribution: ATTRIBUTION, maxZoom: 16 }).addTo(map)
 
     const icon = L.divIcon({
       className: 'adoumin-marker',
