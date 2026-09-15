@@ -118,34 +118,29 @@ function MenuOverlay({ open, origin, onClose }) {
         ))}
       </nav>
 
-      {/* a droite (desktop) : un cercle d'eau — la pastille en grand, remplie des memes vagues,
-          avec le slogan. Il entre en grandissant, apres les liens. */}
+      {/* a droite (desktop) : la pastille en grand, avec une photo du lieu qu'on ne voit nulle part
+          ailleurs sur la page (terrasse, palmiers, fresque, lagune), un leger voile marine vers le
+          bas et le slogan. Elle entre en grandissant apres les liens ; la photo respire au survol. */}
       <div className="hidden flex-1 items-center justify-center pr-40 lg:flex">
-        <div
-          className={`relative flex h-[26rem] w-[26rem] items-center justify-center overflow-hidden rounded-999 ring-1 ring-inset ring-marine/15 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        <a
+          href="#"
+          onClick={onClose}
+          className={`group relative flex h-[26rem] w-[26rem] items-end justify-center overflow-hidden rounded-999 ring-1 ring-inset ring-white/40 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             open ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
           }`}
           style={{ transitionDelay: open ? '650ms' : '0ms' }}
         >
-          <div
-            className="absolute inset-0 bg-marine opacity-[0.14]"
-            style={{
-              maskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 15%, #000 80%)',
-              maskSize: '22rem auto, 100% 100%',
-              maskRepeat: 'repeat, no-repeat',
-              maskComposite: 'intersect',
-              WebkitMaskImage: 'url(/asset/images/vagues.webp), linear-gradient(180deg, transparent 15%, #000 80%)',
-              WebkitMaskSize: '22rem auto, 100% 100%',
-              WebkitMaskRepeat: 'repeat, no-repeat',
-              WebkitMaskComposite: 'source-in',
-              animation: 'drift-x 45s linear infinite',
-            }}
+          <img
+            src="/asset/images/terrasse-palmiers.webp"
+            alt="La terrasse d'Adoumin Beach Resort, entre palmiers et lagune"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_35%] transition-transform duration-[2400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           />
-          <div className="relative flex flex-col items-center gap-6 text-center">
-            <span className="font-script text-[2.75rem] font-light leading-1 text-marine">The Place To Be</span>
-            <span className="font-body text-12 font-bold tracking-2 text-meta-txt">COCODY · BLOCKHAUSS</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-marine/75 via-marine/10 to-transparent" />
+          <div className="relative flex flex-col items-center gap-6 pb-44 text-center">
+            <span className="font-script text-[2.75rem] font-light leading-1 text-white">The Place To Be</span>
+            <span className="font-body text-12 font-bold tracking-2 text-w-cc">COCODY · BLOCKHAUSS</span>
           </div>
-        </div>
+        </a>
       </div>
       </div>
 
