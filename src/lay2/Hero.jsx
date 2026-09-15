@@ -83,7 +83,7 @@ function MenuOverlay({ open, origin, onClose }) {
           type="button"
           onClick={onClose}
           aria-label="Fermer le menu"
-          className="flex h-44 w-44 items-center justify-center rounded-999 text-marine transition-all duration-300 hover:rotate-90 hover:bg-paper-2"
+          className="flex h-[2.75rem] w-[2.75rem] items-center justify-center rounded-999 text-marine transition-all duration-300 hover:rotate-90 hover:bg-paper-2"
         >
           <X size={28} strokeWidth={1.5} />
         </button>
@@ -114,7 +114,7 @@ function MenuOverlay({ open, origin, onClose }) {
             style={stagger(MENU.length)}
           >
             {MENU_SOCIAL.map((s) => (
-              <a key={s} href="#" className="link-underline font-body text-13 font-semibold text-marine">
+              <a key={s} href="#" className="tap link-underline font-body text-13 font-semibold text-marine">
                 {s}
               </a>
             ))}

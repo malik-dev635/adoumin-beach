@@ -79,7 +79,7 @@ export default function Testimonials() {
               type="button"
               aria-label="Témoignage précédent"
               onClick={() => go(-1)}
-              className="group flex h-48 w-48 items-center justify-center rounded-24 border border-line-2 bg-white transition-all duration-300 hover:border-marine hover:bg-marine"
+              className="group flex h-[2.75rem] w-[2.75rem] lg:h-48 lg:w-48 items-center justify-center rounded-24 border border-line-2 bg-white transition-all duration-300 hover:border-marine hover:bg-marine"
             >
               <ArrowLeft
                 size={20}
@@ -91,7 +91,7 @@ export default function Testimonials() {
               type="button"
               aria-label="Témoignage suivant"
               onClick={() => go(1)}
-              className="group flex h-48 w-48 items-center justify-center rounded-24 border border-line-2 bg-white transition-all duration-300 hover:border-marine hover:bg-marine"
+              className="group flex h-[2.75rem] w-[2.75rem] lg:h-48 lg:w-48 items-center justify-center rounded-24 border border-line-2 bg-white transition-all duration-300 hover:border-marine hover:bg-marine"
             >
               <ArrowRight
                 size={20}

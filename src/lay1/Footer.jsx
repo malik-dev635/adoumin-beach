@@ -35,7 +35,7 @@ function Newsletter() {
         <button
           type="submit"
           aria-label="S'inscrire"
-          className="group flex h-40 w-40 shrink-0 items-center justify-center rounded-999 bg-gold transition-all duration-300 hover:scale-105 hover:brightness-95"
+          className="group flex h-[2.5rem] w-[2.5rem] shrink-0 items-center justify-center rounded-999 bg-gold transition-all duration-300 hover:scale-105 hover:brightness-95"
         >
           <ArrowRight size={20} strokeWidth={2} className="text-marine transition-transform duration-300 group-hover:translate-x-[2px]" />
         </button>
@@ -54,7 +54,7 @@ function Cols() {
         <div key={h} className="flex flex-col gap-14">
           <span className="font-body text-11 font-bold tracking-1.5 text-w-66">{h}</span>
           {links.map((l) => (
-            <a key={l} href="#" className="w-fit font-body text-15 font-normal text-w-cc transition-all duration-300 hover:translate-x-[0.25rem] hover:text-white">
+            <a key={l} href="#" className="tap w-fit font-body text-15 font-normal text-w-cc transition-all duration-300 hover:translate-x-[0.25rem] hover:text-white">
               {l}
             </a>
           ))}

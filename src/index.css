@@ -123,6 +123,14 @@
 .leaflet-bar a {
   color: #1c3464;
 }
+/* boutons de zoom : 40 px au doigt, jamais moins */
+@media (pointer: coarse) {
+  .leaflet-bar a {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
 
 /* ---------------------------------------------------------------------------
    Couche mouvement. Rien de tout cela n'existe dans le .pen (qui est statique) :
@@ -175,6 +183,17 @@
     transform: scale(1.05);
     transition-duration: 1.2s;
     transition-delay: 0s;
+  }
+  /* Zone de tap etendue, invisible : les petits liens (listes du footer, icones reseaux) gardent
+     leur taille a l'ecran mais deviennent atteignables au pouce (~33 px de haut, sans chevauchement
+     entre lignes espacees de 14 px). */
+  .tap {
+    position: relative;
+  }
+  .tap::after {
+    content: '';
+    position: absolute;
+    inset: -0.5rem;
   }
   /* Soulignement anime des liens de navigation */
   .link-underline {

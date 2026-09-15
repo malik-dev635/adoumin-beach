@@ -64,7 +64,7 @@ function MenuSheet({ open, onClose }) {
           type="button"
           onClick={onClose}
           aria-label="Fermer le menu"
-          className="-ml-4 flex h-40 w-40 items-center justify-center text-marine transition-transform duration-300 hover:rotate-90"
+          className="-ml-4 flex h-[2.75rem] w-[2.75rem] items-center justify-center text-marine transition-transform duration-300 hover:rotate-90"
         >
           <X size={22} strokeWidth={2} />
         </button>
@@ -73,7 +73,7 @@ function MenuSheet({ open, onClose }) {
           alt="Adoumin Beach Resort"
           className="h-[1.875rem] w-[6.25rem] object-contain"
         />
-        <span className="w-40" aria-hidden="true" />
+        <span className="w-[2.75rem]" aria-hidden="true" />
       </div>
 
       <nav className="flex flex-1 flex-col justify-center gap-4 px-24">
@@ -99,7 +99,7 @@ function MenuSheet({ open, onClose }) {
       >
         <div className="flex items-center justify-between">
           <span className="font-body text-12 text-body-txt">Tous les jours · 12h – 02h</span>
-          <a href="tel:+2250778616899" className="font-body text-12 font-semibold text-marine">
+          <a href="tel:+2250778616899" className="tap font-body text-12 font-semibold text-marine">
             +225 07 78 61 68 99
           </a>
         </div>
@@ -133,7 +133,7 @@ function NavBar() {
           onClick={() => setOpen(true)}
           aria-expanded={open}
           aria-label="Ouvrir le menu"
-          className="-ml-4 flex h-40 w-40 items-center justify-center text-marine md:hidden"
+          className="-ml-4 flex h-[2.75rem] w-[2.75rem] items-center justify-center text-marine md:hidden"
         >
           <Menu size={22} strokeWidth={2} />
         </button>

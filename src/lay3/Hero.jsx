@@ -139,14 +139,14 @@ export default function Hero() {
         </a>
         <a
           href="#"
-          className="link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
+          className="tap link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
         >
           <span className="h-5 w-5 rounded-999 bg-gold" />
           EVENEMENT
         </a>
         <a
           href="#"
-          className="link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
+          className="tap link-underline inline-flex items-center gap-8 border-b border-cream/40 pb-[2px] font-futura text-13 font-medium tracking-1.5 text-cream-cc transition-colors duration-300 hover:text-cream"
         >
           <span className="h-5 w-5 rounded-999 bg-gold" />
           CONTACT

@@ -110,7 +110,7 @@ function Newsletter() {
         <button
           type="submit"
           aria-label="S'inscrire"
-          className="group flex h-40 w-40 shrink-0 items-center justify-center bg-gold transition-all duration-300 hover:brightness-95"
+          className="group flex h-[2.5rem] w-[2.5rem] shrink-0 items-center justify-center bg-gold transition-all duration-300 hover:brightness-95"
         >
           <ArrowRight
             size={20}
@@ -134,7 +134,7 @@ function Cols() {
             <a
               key={l}
               href="#"
-              className="w-fit font-body text-15 font-normal text-w-cc transition-all duration-300 hover:translate-x-[0.25rem] hover:text-white"
+              className="tap w-fit font-body text-15 font-normal text-w-cc transition-all duration-300 hover:translate-x-[0.25rem] hover:text-white"
             >
               {l}
             </a>
@@ -163,7 +163,7 @@ export default function CtaFooter() {
 
         <div className="reveal relative mt-13 flex w-full flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-24">
           {CONTACT.map(({ icon: Icon, label, href }) => (
-            <a key={label} href={href} className="group flex items-center gap-8">
+            <a key={label} href={href} className="tap group flex items-center gap-8">
               <Icon size={17} strokeWidth={2} className="shrink-0 text-w-99" />
               <span className="font-body text-15 font-normal text-w-d9 transition-colors duration-300 group-hover:text-white">
                 {label}
@@ -176,7 +176,7 @@ export default function CtaFooter() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="text-w-b3 transition-all duration-300 hover:-translate-y-[2px] hover:text-white"
+                className="tap text-w-b3 transition-all duration-300 hover:-translate-y-[2px] hover:text-white"
               >
                 <Icon size={18} strokeWidth={2} />
               </a>

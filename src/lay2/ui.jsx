@@ -41,7 +41,7 @@ export function UnderlineLink({ children, href = '#', className = '' }) {
   return (
     <a
       href={href}
-      className={`group inline-flex w-fit items-center gap-8 border-b-[0.5px] border-marine pb-[2px] ${className}`}
+      className={`tap group inline-flex w-fit items-center gap-8 border-b-[0.5px] border-marine pb-[2px] ${className}`}
     >
       <span className="font-body text-15 font-semibold text-marine">{children}</span>
       <span className="h-6 w-6 shrink-0 rounded-999 bg-gold transition-transform duration-300 group-hover:translate-x-[0.25rem]" />
