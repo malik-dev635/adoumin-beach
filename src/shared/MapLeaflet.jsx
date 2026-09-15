@@ -10,6 +10,9 @@ import 'leaflet/dist/leaflet.css'
  */
 export const POSITION = [5.323278, -4.001685]
 export const ITINERAIRE_URL = `https://www.google.com/maps/dir/?api=1&destination=${POSITION[0]},${POSITION[1]}`
+/** Lien profond Yango (l'app de VTC d'Abidjan) : ouvre une course vers le resort. Fourni par le client. */
+export const YANGO_URL =
+  'https://yango.go.link/route?end-lat=5.3215193&end-lon=-4.0018253&ref=malik-dev&lang=fr&adj_deeplink_js=1'
 
 const TUILES =
   'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'

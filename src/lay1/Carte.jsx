@@ -1,5 +1,5 @@
-import { ArrowUpRight } from 'lucide-react'
-import MapLeaflet, { ITINERAIRE_URL } from '../shared/MapLeaflet.jsx'
+import { ArrowUpRight, Car } from 'lucide-react'
+import MapLeaflet, { ITINERAIRE_URL, YANGO_URL } from '../shared/MapLeaflet.jsx'
 import { Badge, Title } from './ui.jsx'
 
 /**
@@ -63,6 +63,7 @@ export default function Carte() {
             <p className="font-body text-13 font-normal leading-1.5 text-title-b">
               Voiturier sur place. Accès direct par la lagune sur réservation.
             </p>
+            <div className="flex flex-wrap gap-12">
             <a
               href={ITINERAIRE_URL}
               target="_blank"
@@ -76,6 +77,17 @@ export default function Carte() {
                 className="text-white transition-all duration-[400ms] group-hover:translate-x-[3px] group-hover:-translate-y-[3px] group-hover:text-marine"
               />
             </a>
+            {/* Yango : l'app de VTC d'Abidjan, une course vers le resort en un tap */}
+            <a
+              href={YANGO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex w-fit items-center gap-8 rounded-40 bg-yango px-26 py-15 ring-1 ring-inset ring-yango transition-colors duration-[400ms] hover:bg-transparent"
+            >
+              <Car size={18} strokeWidth={2} className="text-white transition-colors duration-[400ms] group-hover:text-yango" />
+              <span className="font-body text-15 font-semibold text-white transition-colors duration-[400ms] group-hover:text-yango">Commander un Yango</span>
+            </a>
+            </div>
           </div>
         </div>
       </div>

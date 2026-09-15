@@ -92,6 +92,7 @@ export default {
         'footer-2': '#0B1526',
         'w-99': '#FFFFFF99',
         'line-w50': '#DED8CE80',
+        yango: '#FC3F1D', // rouge de la marque Yango (bouton « Commander un Yango »)
         // Landing — Lay3
         'cream-cc': '#F4EEE4CC',
         'tint-3': '#0E2C5C1F',

@@ -1,4 +1,4 @@
-import MapLeaflet, { ITINERAIRE_URL } from '../shared/MapLeaflet.jsx'
+import MapLeaflet, { ITINERAIRE_URL, YANGO_URL } from '../shared/MapLeaflet.jsx'
 import { BookButton, Heading, Overline } from './ui.jsx'
 
 /**
@@ -16,7 +16,11 @@ export default function Carte() {
           <Overline>NOUS SITUER</Overline>
           <Heading lines={['Cocody,', 'côté lagune']} sizeClass="text-52" />
         </div>
-        <BookButton href={ITINERAIRE_URL}>Itinéraire</BookButton>
+        <div className="flex flex-wrap gap-12">
+          <BookButton href={ITINERAIRE_URL}>Itinéraire</BookButton>
+          {/* Yango : l'app de VTC d'Abidjan, une course vers le resort en un tap */}
+          <BookButton href={YANGO_URL} tone="yango">Commander un Yango</BookButton>
+        </div>
       </div>
 
       <div className="reveal w-full" style={{ '--d': '0.12s' }}>
