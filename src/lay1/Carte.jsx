@@ -33,7 +33,7 @@ export default function Carte() {
 
       <div className="flex w-full flex-col gap-32 lg:flex-row">
         <div className="reveal flex-1">
-          <MapLeaflet />
+          <MapLeaflet className="map-frame rounded-24 bg-map-bg" />
         </div>
 
         {/* Accès : w 340, justifyContent space_between — s'etire sur la hauteur de la carte */}
