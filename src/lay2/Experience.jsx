@@ -25,20 +25,18 @@ function Card({ title, desc, img, delay }) {
   return (
     <a
       href="#"
-      className="group reveal flex min-w-0 flex-1 flex-col gap-20"
-      style={{ '--d': delay }}
+      className="group flex min-w-0 flex-1 flex-col gap-20"
     >
-      <div className="aspect-[4/3] w-full overflow-hidden rounded-4 lg:aspect-auto lg:h-398">
-        <img
-          src={img}
-          alt=""
-          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
-        />
+      <div
+        className="reveal reveal-wipe reveal-wipe-left aspect-[4/3] w-full overflow-hidden rounded-4 lg:aspect-auto lg:h-398"
+        style={{ '--d': delay }}
+      >
+        <img src={img} alt="" className="h-full w-full object-cover" />
       </div>
-      <span className="font-futura text-24 font-light text-marine transition-transform duration-500 group-hover:translate-x-[0.25rem]">
+      <span className="reveal font-futura text-24 font-light text-marine transition-transform duration-500 group-hover:translate-x-[0.25rem]" style={{ '--d': delay }}>
         {title}
       </span>
-      <p className="font-body text-15 font-normal leading-1.55 text-text-3">{desc}</p>
+      <p className="reveal font-body text-15 font-normal leading-1.55 text-text-3" style={{ '--d': delay }}>{desc}</p>
     </a>
   )
 }

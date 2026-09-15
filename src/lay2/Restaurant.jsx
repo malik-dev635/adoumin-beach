@@ -19,12 +19,8 @@ const IMG =
 export default function Restaurant() {
   return (
     <section className="flex w-full flex-col gap-40 bg-paper px-32 py-[3.5rem] sm:py-80 lg:flex-row lg:items-center lg:gap-80 lg:py-110">
-      <div className="reveal group aspect-[4/3] w-full overflow-hidden rounded-4 sm:aspect-[580/620] lg:h-620 lg:w-580 lg:shrink-0">
-        <img
-          src={IMG}
-          alt=""
-          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-        />
+      <div className="reveal reveal-wipe reveal-wipe-left aspect-[4/3] w-full overflow-hidden rounded-4 sm:aspect-[580/620] lg:h-620 lg:w-580 lg:shrink-0">
+        <img src={IMG} alt="" className="h-full w-full object-cover" />
       </div>
 
       <div className="reveal flex flex-1 flex-col gap-26" style={{ '--d': '0.12s' }}>

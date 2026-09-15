@@ -33,13 +33,13 @@ export default function Events() {
       </div>
 
       <div
-        className="reveal group aspect-[4/3] w-full overflow-hidden rounded-4 sm:aspect-[580/620] lg:h-620 lg:w-580 lg:shrink-0"
+        className="reveal reveal-wipe reveal-wipe-right aspect-[4/3] w-full overflow-hidden rounded-4 sm:aspect-[580/620] lg:h-620 lg:w-580 lg:shrink-0"
         style={{ '--d': '0.12s' }}
       >
         <img
           src="/asset/images/SaveClip.App_773735872_18131074696649928_6645806752556244771_n.jpg"
           alt=""
-          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          className="h-full w-full object-cover"
         />
       </div>
     </section>

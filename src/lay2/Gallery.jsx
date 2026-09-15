@@ -29,18 +29,14 @@ const COLS = [
   ],
 ]
 
-function Photo({ src, alt, h }) {
+function Photo({ src, alt, h, delay }) {
   return (
     <a
       href="#"
-      className="group relative min-h-0 w-full overflow-hidden rounded-6"
-      style={{ flexGrow: h, flexBasis: 0 }}
+      className="group reveal reveal-wipe reveal-wipe-up relative min-h-0 w-full overflow-hidden rounded-6"
+      style={{ flexGrow: h, flexBasis: 0, '--d': delay }}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
-      />
+      <img src={src} alt={alt} className="h-full w-full object-cover" />
       <span className="pointer-events-none absolute inset-0 bg-marine/0 transition-colors duration-500 group-hover:bg-marine/10" />
     </a>
   )
@@ -62,11 +58,10 @@ export default function Gallery() {
         {COLS.map((col, i) => (
           <div
             key={i}
-            className="reveal flex h-[20rem] min-w-0 flex-col gap-12 sm:h-[26.25rem] sm:gap-16 lg:h-full lg:flex-1"
-            style={{ '--d': `${i * 0.08}s` }}
+            className="flex h-[20rem] min-w-0 flex-col gap-12 sm:h-[26.25rem] sm:gap-16 lg:h-full lg:flex-1"
           >
-            {col.map((p) => (
-              <Photo key={p.src} {...p} />
+            {col.map((p, j) => (
+              <Photo key={p.src} {...p} delay={`${i * 0.1 + j * 0.12}s`} />
             ))}
           </div>
         ))}
